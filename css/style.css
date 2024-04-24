@@ -1,0 +1,990 @@
+/*
+ * Variables
+ */
+ :root {
+    --white-color: #fff;
+    --black-color: #000;
+    --blue1-color: #0B162C;
+    --blue2-color: #709CA7;
+    --blue3-color: #1C2942;
+
+
+}
+
+/* lien vers les fonts / Style de la police */
+@font-face {
+    font-family: "Tahu Regular";
+    src: url("./font/tahu-webfont.woff") format("woff2");
+    src: url("./font/tahu-webfont.woff2") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Choix de la police / Couleur pour la page */
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    }
+
+
+
+/*
+* Accueil
+*/
+
+
+/* Taille et couleur */
+.taille {
+    font-size: 80px;
+    color: white;
+
+}
+
+/* Centre le titre / Taille */
+.produit h1 {
+    text-align: center;
+    font-size: 65px;
+}
+
+/* Taille du paragraphe */
+.produit p {
+    font-size: 18px;
+}
+
+/* Enlever la décoration / Couleur */
+.produit a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Lorsque l'on survole il est souligner */
+.produit a:hover {
+    text-decoration: underline;
+    color: black;
+
+}
+
+/* Marge */
+.para {
+    padding-right: 15px;
+    float: right;
+}
+
+/* disposition de l'image à côté du paragraphe */
+.image-produit img { 
+    width: 850px; 
+    height:auto;
+    float: left;
+    margin-right: 25px;
+}
+
+/* Taille des images */
+.affichageProduitsImg {
+    width: 250px;
+}
+
+.affichageImg{
+    max-height: 100%;
+    width: auto;
+}
+
+/* Enlever la décoration / Couleur */
+.affichageProduits a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Enlever la décoration / Couleur */
+.affichageProduits2 a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Enlever la décoration / Couleur */
+.linkAvis{
+    text-decoration: none;
+    color: black;
+    white-space: nowrap;
+}
+
+/* Enlever la décoration / Couleur */
+.affichageProduits:hover {
+    background-color: black solid 5px;
+    color: black;
+}
+
+/* Enlever la décoration / Couleur */
+.affichageProduits2:hover {
+    background-color: black solid 5px;
+    color: black;
+}
+
+/* souligne lorsque l'on survole le titre des produits / Couleur  */
+.affichageProduits .titre-produit .affichageProduits2  a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.titre-produit{
+    text-align: start;
+    max-height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* caractéristique de l'image étoile */
+
+.tailleEtoile img{
+    width: 100px;
+    margin-right: 90px;
+    
+}
+
+.tailleEtoile {
+    display: flex;
+    align-items: center;
+}
+
+.tailleEtoileImg{
+    width: 100px;
+}
+
+
+
+.linkLi p:hover {
+    text-decoration: underline;
+    color: black;
+    text-align: start;
+}
+
+.linkLi {
+    margin-bottom: -5px;
+    color: black;
+    text-align: start;
+    
+}
+
+.affichageProduits{
+    width: 265px;
+
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 100%;
+
+}
+
+/* Lorsque quand passe par dessus Enlever la décoration / Couleur */
+.affichageProduits a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.affichageProduits2{
+    margin-right: 10px;
+}
+.js-filter-content{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+
+.erreur-message{
+    color: black !important;
+    font-size: 17px;
+}
+
+/* met le logo o'barber au centre*/
+.logoIntro{
+    display: flex;
+    justify-content: center;
+}
+
+
+/* met sur un ligne est aligne à gauche */
+.positionBlock {
+    text-align: right;
+    display: inline;
+}
+
+
+/* caractéristique du bouton ajouté au panier */
+.ajoutPanier {
+    background-color: gray;
+    color: white;
+    padding: 10px 2px 10px 2px;
+    margin-top: 4px;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+/* modifie la taille des titres */
+.affichageBestseller h1{
+    text-align: center;
+    font-size: 65px;
+}
+
+
+/* centre les image */
+.imageCentre {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* positionnement de la div "affichageBestseller" */
+.affichageBestseller {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* positionnement du titre pour l'huile */
+.text-labonnerecette{
+    position: absolute;
+    top: 652px;
+    left: 240px;
+    z-index: 2;
+}
+
+/* positionnement du paragraphe pour l'huile */
+.text-labonnerecette2{
+    position: absolute;
+    top: 689px;
+    left: 170px;
+    z-index: 2;
+    text-align: center;
+}
+
+/* caractéristique du bouton je découvre pour l'huile */
+.btn-jeDecouvre {
+    position: absolute;
+    top: 742px;
+    left: 230px;
+    z-index: 2;
+    background-color: black;
+    color: white;
+    padding: 10px 95px 10px 95px;
+    margin-top: 4px;
+}
+
+
+/* positionnement de la div "affichageBestseller2" */
+.affichageBestseller2 {
+    position: relative;
+    z-index: 1;
+}
+
+/* positionnement du titre pour le beard roller */
+.text-beardroller{
+    position: absolute;
+    top: 562px;
+    left: 845px;
+    z-index: 2;
+}
+
+/* positionnement du paragraphe pour le beard roller */
+.text-beardroller2{
+    position: absolute;
+    top: 595px;
+    left: 700px;
+    z-index: 2;
+    text-align: center;
+}
+
+/* caractéristique du bouton je découvre pour le beard roller */
+.btn-jeDecouvre2 {
+    position: absolute;
+    top: 644px;
+    left: 800px;
+    z-index: 2;
+    background-color: black;
+    color: white;
+    padding: 10px 95px 10px 95px;
+    margin-top: 4px;
+}
+
+
+
+/*
+* Header
+*/
+
+/* Met le logo connexion / panier à droite */
+#panier, #connexion{
+    margin-left: -60px;
+}
+
+.recherche{
+position: relative;
+float: right;
+margin-top: -50px;
+margin-right: 10px;
+}
+
+
+#head {
+    background-color: var(--black-color);
+    padding: 20px 0 10px 0;
+    
+}
+
+#head .logo img{
+    margin-left: 130px;
+    width: 250px;
+}
+
+#head .flex{
+    display: flex;
+}
+
+
+
+
+
+#head .mini-nav a {
+    margin-left: 55px;
+    line-height: 80px;
+    display: inline-block;
+
+}
+
+
+/* barre nav */
+
+/* Style pour la liste déroulante Mon Compte */
+.dropdown-menu {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  .dropdown-item {
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background-color: #e9ecef;
+    color: #495057;
+    text-decoration: none;
+  }
+
+
+  /*
+  * Footer
+  */
+
+/* maintient le footer en bas de la page */
+footer {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: black;
+    width: 100%;
+}
+
+/* caractéristique du footer Taille / Positionnement / Position des éléments du corps */
+.contenu-footer {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 20px;
+    padding: 70px 0 100px;
+}
+
+/* Taille de chaque div Taille 25 car 100% / 4 = 25 // Couleur / Marge */
+.bloc {
+    width: 25%;
+    margin: 0 30px;
+    color: white;
+}
+
+/* Taille et Couleur du titre / Marge */
+.footer-apropos h3 {
+    font-size: 25px;
+    padding-bottom: 20px;
+    color: white;
+
+}
+
+/* Taille et Couleur du titre / Marge */
+.footer-livraison h3{
+    font-size: 25px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+/* Taille et Couleur du titre / Marge  */
+.footer-securite h3{
+    font-size: 25px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+/* Taille et Couleur du titre / Marge */
+.footer-question h3 {
+    font-size: 25px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+/* Marge et Couleur du paragraphe */
+.footer-question p {
+    padding: 5px 0;
+    color: white;
+
+}
+
+/* Enleve les points de liste (la virgule fait office de && pour css) */
+.liste-apropos, .liste-livraison {
+    list-style-type: none;
+    
+}
+
+/* Marge */
+.liste-apropos li {
+    padding: 2px 0;
+}
+
+/* Enleve la décoration des liens / Couleur */
+.liste-apropos a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Lorsqu'on survole les liens il est surligner / Enlever la décoration / Couleur */
+.liste-apropos a:hover {
+    text-decoration: none;
+    color: white;
+    text-decoration : underline;
+}
+
+/* Marge  */
+.liste-livraison li {
+    padding: 2px 0;
+}
+
+/* Enleve la décoration des liens / Couleur */
+.liste-livraison a {
+    text-decoration: none;
+    color: white;
+}
+
+/*  Lorsqu'on survole les liens ils sont surligner / Enlever la décoration / Couleur  */
+.liste-livraison a:hover {
+    text-decoration: none;
+    color: white;
+    text-decoration : underline;
+}
+
+/* */
+.footer-livraison p {
+    color: white;
+    padding: 5px 0;
+}
+
+/* Marge et Couleur du paragraphe */
+.footer-securite p {
+    color: white;
+    padding: 5px 0;
+}
+
+/* fin de page */
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: black;
+}
+
+/*
+* Contact
+*/
+
+.nosContacts h3{
+    text-align: center;
+}
+
+.nosContacts p{
+    margin-left: 230px;
+}
+
+
+/*
+* Connexion
+*/
+
+.leLienInscription  {
+    text-decoration: none;
+    color: black;
+}
+
+.leLienInscription:hover  {
+    text-decoration: none;
+    color: black;
+}
+
+.maDiv {
+    margin-bottom: 50px;
+}
+
+.erreur-message{
+    color: red;
+}
+
+.divInline{
+    display: inline-block;
+    float: none;
+}
+
+
+.btnInscriptionPc{
+    margin-top: 20px;
+}
+
+/*
+* Inscription
+*/
+#genre-select {
+    width: 540px;
+    height: 39px;
+    margin-left: -13px;
+    background-color: white;
+    border: #CED4DA solid 1px;
+    color: #6C757D;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+#genre-select {
+    margin-left: -15px;
+}
+
+/*
+* Un Produit
+*/
+
+.imageDuProduit { 
+    width:350px;
+    height: 350px;
+    float: left;
+    margin-right: 50px;
+}
+
+/* caractéristique de l'image étoile */
+.tailleEtoile2 img{
+    width: 100px;
+    margin-right: 90px;
+}
+
+.tailleEtoile{
+    text-align: start;
+    max-height: 100%;
+    overflow: hidden;
+
+
+}
+
+.lePrix2 {
+    margin-top: 8px;
+}
+
+
+/* caractéristique du bouton ajouté au panier */
+.ajoutPanier2 {
+    background-color: gray;
+    color: white;
+    padding: 10px 2px 10px 2px;
+    height: 45px;
+    text-align: center;
+    border-style:none;
+    margin-top: 15px;
+}
+
+
+.divAjPan{
+    float: right;
+}
+
+.image-produit2 a {
+    text-decoration: none;
+    color: black;
+    margin-left: -69px;
+}
+
+.image-produit2 a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
+#quantite-produit2 {
+    width: 40px;
+    text-align: center;
+}
+
+.pagination {
+    display: inline-block;
+    margin: 0 auto;
+  }
+  
+  .pagination a {
+    color: black;
+    
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination a.active {
+    background-color: #6C757D;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+  }
+
+
+
+/*
+* Panier
+*/
+
+.titrePanier{
+    color: rgb(45, 45, 52);
+}
+
+.lePrix{
+    text-align: left;
+    color: rgb(45, 45, 52);
+    margin-top: 60px;
+}
+
+.imageDuProduit2{
+    float:inline-start;
+    margin-left: -90px;
+
+    margin-top: 3px;
+}
+
+
+
+.imageDuProduit2{
+    float:inline-start;
+    margin-left: -90px;
+    width: 250px;
+    height: 250px;
+    margin-top: 3px;
+}
+
+.leTitre{
+    text-align: left;
+    margin-top: 10px;
+    color: rgb(66, 66, 66);
+}
+
+#quantite-produit {
+    width: 40px!important;
+    text-align: center;
+    border: 0px;
+    color: rgb(66, 66, 66);
+}
+
+#lblprod {
+    width: 40px;
+    color: rgb(66, 66, 66);
+}
+
+.divPselection select{
+    width: 150px;
+}
+
+.sousTotal{
+    color: rgb(45, 45, 52);
+    margin-left: 320px;
+}
+
+.trait {
+    width: 80%;
+    border-bottom: 1px solid rgb(128, 128, 128);
+    margin: 20px 0;
+}
+
+.imageCroix{
+    width: 20px!important;
+    margin-left: 388px;
+    margin-top: -75px;
+}
+
+/* caractéristique du bouton ajouté une commande */
+.ajoutCommande {
+    background-color: rgb(1, 169, 91);
+    color: white;
+    padding: 10px 2px 10px 2px;
+    margin-top: 35px;
+    text-align: center;
+    width: 280px;
+    text-decoration: none;
+}
+
+.linkAjoute{
+    text-decoration: none;
+}
+
+.linkAjoute:hover{
+    text-decoration: none;
+}
+
+.totalSomme, .totalLivraison {
+    color: rgb(33, 35, 34);
+}
+
+.leLienA{
+    text-decoration: none;
+    color: rgb(66, 66, 66);
+}
+
+.leLienA:hover{
+    text-decoration: underline;
+    color: rgb(66, 66, 66);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.pVide {
+    font-size: 18px;
+    margin-left: 50%;
+    margin-bottom: 10px;
+}
+
+.lVide {
+    font-size: 14px;
+    margin-left: 50%;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    text-decoration: none;
+    background-color: #6C757D;
+}
+
+.lVide:hover {
+    font-size: 14px;
+    margin-left: 50%;
+    color: rgb(167, 166, 166);
+    background-color: #4d5358;
+    text-decoration: none;
+
+}
+
+.divPVide{
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.triCategorie{
+    margin-top: 15px;
+    margin-bottom: 30px;
+    height: 40px;
+    text-align: center;
+    background-color: gray;
+    color: white;
+    border-radius: 0.2em;
+}
+
+.triCategorie option {
+    background-color: white;
+}
+
+
+
+
+
+/*
+* Bienvenue
+*/
+.inscription {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.para-inscription {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+
+}
+
+.lesLiens {
+    text-decoration: none;
+    color: black;
+}
+
+.lesLiens:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+
+/*
+* Profil
+*/
+.pTitre{
+    margin-top: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    
+}
+
+#envoyer-form{
+    margin-top: 20px;
+}
+
+.editInput{
+    width: 200px;
+}
+
+.dec{
+    margin-left: 400px;
+    margin-right: 30px;
+}
+
+.deca2{
+    margin-left: 30px;
+}
+
+
+/*
+* Recherche
+*/
+.suggestions-liste {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.suggestion {
+    padding: 8px;
+    cursor: pointer;
+}
+  
+.suggestion:hover {
+    background-color: #f1f1f1;
+}
+
+.recherche{
+    text-decoration: none;
+}
+
+.suggestions-container {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+}
+
+/*
+* Historique Commandes
+*/
+
+
+
+.titreHCmd{
+    margin-top: 50px;
+    background-color: #dddddd;
+    padding: 1em;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.contenuHCmd{
+    margin-top: 50px;
+    background-color: #eeeeee;
+    padding: 1em;
+}
+
+.lblStatutHCmd{
+    color: #2d2d2d;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .10rem;
+    line-height: 22px;
+}
+
+.lblStatut{
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .6px;
+    line-height: 22px;
+}
+
+.trait2 {
+    width: 100%;
+    border-bottom: 1px solid rgb(128, 128, 128);
+    margin: 20px 0;
+}
+
+.lblHCmd{
+    color: #2d2d2d;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: .04rem;
+}
+
+.lblRCmd{
+    color: #2d2d2d;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+
+.divVoirCmd {
+    float: right;
+    margin-top: -55px;
+
+}
+
+.divVoirCmd a {
+    text-decoration: none;
+    color: #2d2d2d;
+    padding: 1rem;
+    background-color: white;
+    border:#cccccc 2px solid;
+    
+}
+.divVoirCmd a:hover {
+    text-decoration: none;
+    color: #2d2d2d;
+    padding: 1rem;
+    background-color: #cccccc;
+    border:#cccccc 2px solid;
+    
+}
+
+.divISCmd p{
+    display: inline-block;
+}
+
+.imgProdCmd{
+    width: 100px;
+    margin-right: 10px;
+}

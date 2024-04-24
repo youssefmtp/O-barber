@@ -1,0 +1,35 @@
+# Turn rewrite engine on
+Options +FollowSymlinks
+RewriteEngine on
+
+# map neat URL to internal URL
+RewriteRule ^contact/$   index.php?controller=view&action=contact [nc]
+RewriteRule ^produits/$  index.php?controller=produit&action=show [nc]
+RewriteRule ^connexion/$   index.php?controller=view&action=connexion [nc]
+RewriteRule ^erreur/$   index.php?controller=view&action=erreur [nc]
+RewriteRule ^inscription/$   index.php?controller=view&action=inscription [nc]
+RewriteRule ^panier/$   index.php?controller=view&action=panier [nc]
+RewriteRule ^login/$   index.php?controller=utilisateur&action=seconnecter [nc]
+RewriteRule ^commande/$   index.php?controller=view&action=commande [nc]
+RewriteRule ^recapitulatif-commande/$   index.php?controller=commande&action=show [nc]
+RewriteRule ^produits/details/([0-9]+)/$ index.php?controller=produit&action=showUnProd&id=$1 [nc,qsa]
+RewriteRule ^produits/details/([0-9]+)/ajouter-panier/([0-9]+)/([0-9]+)/$ index.php?controller=produit&action=add&id=$1&qte=$3 [nc,qsa]
+RewriteRule ^produits/ajouter-panier/([0-9]+)/([0-9]+)/$ index.php?controller=produit&action=add&id=$1&qte=$2 [nc,qsa]
+RewriteRule ^ajouter-panier/([0-9]+)/([0-9]+)/$ index.php?controller=produit&action=add&id=$1&qte=$2 [nc,qsa]
+RewriteRule ^panier/supprimer-panier/([0-9]+)/$ index.php?controller=produit&action=delete&index=$1 [nc,qsa]
+RewriteRule ^deconnexion/$   index.php?controller=utilisateur&action=deconnexion [nc]
+RewriteRule ^inscription/new/$   index.php?controller=utilisateur&action=inscription [nc]
+RewriteRule ^bienvenue/$   index.php?controller=view&action=bienvenue [nc]
+RewriteRule ^profil/$   index.php?controller=view&action=profil [nc]
+RewriteRule ^edit/$   index.php?controller=utilisateur&action=edit [nc]
+RewriteRule ^produits/produitFiltrer/id=([a-zA-Z0-9]+)/$  index.php?controller=produit&action=showByFiltre&filtre=$1 [nc,qsa]
+RewriteRule ^produits/produitFiltrer/idCateg=([a-zA-Z0-9]+)/$  index.php?controller=produit&action=showByFiltre&filtre=$1 [nc,qsa]
+RewriteRule ^produits/produitFiltrer/([a-zA-Z0-9]+)/$  index.php?controller=produit&action=showByFiltre&filtre=$1 [nc,qsa]
+RewriteRule ^(.*)/recherche/([a-zA-Z0-9]+)/$  index.php?controller=produit&action=showRecherche&valeurRecherche=$2 [nc,qsa]
+RewriteRule ^recherche/([a-zA-Z0-9]+)/$  index.php?controller=produit&action=showRecherche&valeurRecherche=$1 [nc,qsa]
+RewriteRule ^produits/produitRechercher/([a-zA-Z0-9]+)/$  index.php?controller=produit&action=showProduitRecherche&valeurRecherche=$1 [nc,qsa] 
+RewriteRule ^produitRechercher/([a-zA-Z0-9]+)/$  index.php?controller=produit&action=showProduitRecherche&valeurRecherche=$1 [nc,qsa]
+RewriteRule ^panier/refresh/([0-9]+)/([0-9]+)/$  index.php?controller=produit&action=actualisePanier&index=$1&qte=$2 [nc,qsa]
+
+
+
