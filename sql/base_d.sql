@@ -7,19 +7,20 @@ CREATE DATABASE IF NOT EXISTS `base_site_ecommerce` /*!40100 DEFAULT CHARACTER S
 USE `base_site_ecommerce`;
 -- Suppression des tables si elles existent
 
-DROP TABLE IF EXISTS `categorie`;
-DROP TABLE IF EXISTS `sous_categorie`;
-DROP TABLE IF EXISTS `role`;
-DROP TABLE IF EXISTS `produit`;
-DROP TABLE IF EXISTS `utilisateur`;
-DROP TABLE IF EXISTS `transporteur`;
-DROP TABLE IF EXISTS `commande`;
-DROP TABLE IF EXISTS `detail_commande`;
-DROP TABLE IF EXISTS `fournisseur`;
-DROP TABLE IF EXISTS `demande`;
+
 DROP TABLE IF EXISTS `avis`;
-DROP TABLE IF EXISTS `statut`;
 DROP TABLE IF EXISTS `changement_statut`;
+DROP TABLE IF EXISTS `statut`;
+DROP TABLE IF EXISTS `demande`;
+DROP TABLE IF EXISTS `fournisseur`;
+DROP TABLE IF EXISTS `detail_commande`;
+DROP TABLE IF EXISTS `commande`;
+DROP TABLE IF EXISTS `transporteur`;
+DROP TABLE IF EXISTS `produit`;
+DROP TABLE IF EXISTS `sous_categorie`;
+DROP TABLE IF EXISTS `categorie`;
+DROP TABLE IF EXISTS `utilisateur`;
+DROP TABLE IF EXISTS `role`;
 
 
 --
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `seuilAlerte` integer,
   `idSousCateg` integer NOT NULL,
   CONSTRAINT `pk_produit` PRIMARY KEY (`id`),
-  FOREIGN KEY (`idSousCateg`) REFERENCES `sous_categorie`(`id`)
+  CONSTRAINT `fk_produit_souscategorie` FOREIGN KEY (`idSousCateg`) REFERENCES `sous_categorie`(`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `utilisateur` (
@@ -74,9 +75,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `cp` char(5),
   `ville` varchar(30),
   `mdp` varchar(60),
-  `idRole` integer NOT NULL,
+  `idRole` integer NOT NULL default 2,
   CONSTRAINT `pk_utilisateur` PRIMARY KEY (`id`),
-  FOREIGN KEY (`idRole`) REFERENCES `role`(`id`)
+  CONSTRAINT `fk_utilisateur_role` FOREIGN KEY (`idRole`) REFERENCES `role`(`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -96,10 +97,10 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `cpLivraison` char(5),
   `villeLivraison` varchar(30),
   `idClient` integer NOT NULL,
-  `idTransporteur` integer NOT NULL,
+  `idTransporteur` integer NULL,
   CONSTRAINT `pk_commande` PRIMARY KEY (`ref`),
-  FOREIGN KEY (`idClient`) REFERENCES `utilisateur`(`id`),
-  FOREIGN KEY (`idTransporteur`) REFERENCES `transporteur`(`id`)  
+  CONSTRAINT `fk_commande_utilisateur` FOREIGN KEY (`idClient`) REFERENCES `utilisateur`(`id`),
+  CONSTRAINT `fk_commande_transporteur` FOREIGN KEY (`idTransporteur`) REFERENCES `transporteur`(`id`)  
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `detail_commande` (
@@ -107,8 +108,8 @@ CREATE TABLE IF NOT EXISTS `detail_commande` (
   `idProduit` integer NOT NULL,
   `quantite` integer NOT NULL,
   CONSTRAINT `pk_detail_commande` PRIMARY KEY (`refCommande`, `idProduit`), 
-  FOREIGN KEY (`refCommande`) REFERENCES `commande`(`ref`),
-  FOREIGN KEY (`idProduit`) REFERENCES `produit`(`id`)
+  CONSTRAINT `fk_detailcommande_commande` FOREIGN KEY (`refCommande`) REFERENCES `commande`(`ref`),
+  CONSTRAINT `fk_detailcommande_produit` FOREIGN KEY (`idProduit`) REFERENCES `produit`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `fournisseur` (
@@ -129,8 +130,8 @@ CREATE TABLE IF NOT EXISTS `demande` (
   `idFournisseur` integer NOT NULL,
   `idProduit` integer NOT NULL,
   CONSTRAINT `pk_demande` PRIMARY KEY (`id`),
-  FOREIGN KEY (`idFournisseur`) REFERENCES `fournisseur`(`id`),
-  FOREIGN KEY (`idProduit`) REFERENCES `produit`(`id`)
+  CONSTRAINT `fk_demande_fournisseur` FOREIGN KEY (`idFournisseur`) REFERENCES `fournisseur`(`id`),
+  CONSTRAINT `fk_demande_produit` FOREIGN KEY (`idProduit`) REFERENCES `produit`(`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `avis` (
@@ -142,8 +143,8 @@ CREATE TABLE IF NOT EXISTS `avis` (
   `idClient` integer NOT NULL,
   `idProduit` integer NOT NULL,
   CONSTRAINT `pk_avis` PRIMARY KEY (`id`),
-  FOREIGN KEY (`idClient`) REFERENCES `utilisateur`(`id`),
-  FOREIGN KEY (`idProduit`) REFERENCES `produit`(`id`)
+  CONSTRAINT `fk_avis_utilisateur` FOREIGN KEY (`idClient`) REFERENCES `utilisateur`(`id`),
+  CONSTRAINT `fk_avis_produit` FOREIGN KEY (`idProduit`) REFERENCES `produit`(`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `statut` (
@@ -157,8 +158,8 @@ CREATE TABLE IF NOT EXISTS `changement_statut` (
   `refCommande` integer NOT NULL,
   `dateChangement` datetime,
   CONSTRAINT `pk_statut_commande` PRIMARY KEY (`idStatut`, `refCommande`),
-  FOREIGN KEY (`idStatut`) REFERENCES `statut`(`id`),
-  FOREIGN KEY (`refCommande`) REFERENCES `commande`(`ref`)
+  CONSTRAINT `fk_statutcommande_statut` FOREIGN KEY (`idStatut`) REFERENCES `statut`(`id`),
+  CONSTRAINT `fk_statutcommande_commande` FOREIGN KEY (`refCommande`) REFERENCES `commande`(`ref`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
@@ -246,7 +247,7 @@ C'est le rivage aride et secret de l'île de Pantelleria, où Giorgio Armani aim
 aime se ressourcer, qui a inspiré ce parfum. Ce baume est conçu pour un usage quotidien. Testé dermatologiquement, il convient à tous 
 les types de peaux, même les plus sensibles. Ce dernier nourrit en profondeur et hydrate l’épiderme. Il le rend plus lisse et aide à 
 lutter contre les irritations ou les microcoupures pouvant provoquer des infections ou des démangeaisons.",
-'../img/baume-armani1', 20, 41.50, 5, 12),
+'../img/baume-armani1.png', 20, 41.50, 5, 12),
 
 ("NeoFollics",  'neofollics-beardroller1', 'Rouleau pousse barbe qui améliore la croissance de la barbe', "Le Neofollics Beard Roller est le rouleau à barbe le plus avancé 
 qui active et stimule la croissance de la barbe de plusieurs manières. Le rouleau ergonomique comporte 
@@ -278,7 +279,7 @@ Vous aussi, messieurs, vous avez le droit de vous faire plaisir et de prendre so
 "Les soins de peau ne sont pas exclusivement réservés aux femmes ! Vous aussi, messieurs, vous avez le droit de vous faire plaisir et 
 de prendre soin de vous. Le Baume Après Rasage associe des actifs apaisants qui atténuent les irritations causées par le rasage. 
 Sa formule au ginseng nourrit et adoucit la peau, et procure une sensation de confort tout au long de la journée.",
-'../img/baume-nocibe1', 20, 18.95, 5, 12),
+'../img/baume-nocibe1.png', 20, 18.95, 5, 12),
 
 ("Horace",  'horace-brosse1', 'Brosse à barbe', "Libérez votre barbe de l'accumulation quotidienne et lissez les nœuds avec cette 
 brosse à barbe de conception allemande et végétalienne.", "Libérez votre barbe de l'accumulation quotidienne et lissez les nœuds avec 
@@ -301,7 +302,7 @@ Fabriqué en France.",
 '../img/allumette-osma1.png', 20, 1.60, 5, 10),
 
 ("Nivea Men",  'niveamen-creme1', 'Crème à raser douce', "Crème à raser pour homme.",
-"Crème à raser pour homme. Pour tous types de peaux", '../img/creme-nivea1', 20, 6.99, 5, 11),
+"Crème à raser pour homme. Pour tous types de peaux", '../img/creme-nivea1.png', 20, 6.99, 5, 11),
 
 
 ("O'barber",  'obarber-brosse2', 'Brosse pour barbe', "Brosse à barbe et moustache O'barber. ",
@@ -400,7 +401,7 @@ composée de 99 % d'ingrédients d'origine naturelle (huile de sésame, huile d'
 
 ("LMDB",  'lmdb-creme1', 'Crème de rasage bio', "Crème à raser pour homme.",
 "Crème à raser pour homme. Pour tous types de peaux",
-'../img/creme-lmdb1', 20, 9.19, 5, 11),
+'../img/creme-lmdb1.png', 20, 9.19, 5, 11),
 
 ('Philips', 'phillips-rasoirelec1', 'Rasoir électrique', "Rasage de près pratique et sans effort ",
 "Rasage de près pratique et sans effort

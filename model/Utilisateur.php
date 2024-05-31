@@ -12,16 +12,17 @@
     * Attributs
     */
     private int $idUtilisateur, $telephone, $cp;
-    private string $nom, $prenom, $genre, $mail, $adresse, $ville, $mdp;
+    private string $nom, $prenom, $genre, $mail, $mdp;
     private datetime $dateNaissance;
+    private ?string $adresse, $ville;
 
 
 
     /*
     * Constructeur
     */
-    public function __construct(int $unId, string $unNom, string $unPrenom, string $unGenre, datetime $uneDateNaissance, string $unMail, string $uneAdresse, 
-    string $uneVille, int $unCp, int $unTelephone, string $unMdp) {
+    public function __construct(int $unId, string $unNom, string $unPrenom, string $unGenre, datetime $uneDateNaissance, string $unMail, ?string $uneAdresse, 
+    ?string $uneVille, int $unCp, int $unTelephone, string $unMdp) {
         $this->idUtilisateur = $unId;
         $this->nom = $unNom;
         $this->prenom = $unPrenom;

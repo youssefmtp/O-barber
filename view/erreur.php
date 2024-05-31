@@ -1,7 +1,7 @@
 <?php
 
 /**
- * /view/error.php
+ * /view/erreur.php
  * 
  * Page d'erreur
  *
@@ -9,7 +9,7 @@
  * @date 07/2023
  */
 
-$title = 'Erreur 404 | Webylo Recrutement';
+$title = 'Erreur 404 | O\'barber';
 include 'header.php';
 
 ?> 
@@ -19,7 +19,7 @@ include 'header.php';
       <p class="text-center display-6">La page n'existe pas</p>
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
 
     <!-- Début footer -->
     <?php 

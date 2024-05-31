@@ -27,7 +27,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    }
+}
 
 
 
@@ -44,26 +44,28 @@
 }
 
 /* Centre le titre / Taille */
-.produit h1 {
+.titreSAccueil {
     text-align: center;
     font-size: 65px;
+    text-decoration: underline #F5D09C;
+    font-weight: 500;
 }
 
 /* Taille du paragraphe */
 .produit p {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 /* Enlever la décoration / Couleur */
-.produit a {
+.linkNosProds {
     text-decoration: none;
-    color: black;
+    color: #E2A755;
 }
 
 /* Lorsque l'on survole il est souligner */
-.produit a:hover {
+.linkNosProds:hover {
     text-decoration: underline;
-    color: black;
+    color: #E2A755;
 
 }
 
@@ -74,16 +76,52 @@
 }
 
 /* disposition de l'image à côté du paragraphe */
-.image-produit img { 
-    width: 850px; 
-    height:auto;
-    float: left;
-    margin-right: 25px;
+.image-produit{ 
+    margin-top: -60px;
+    z-index: -1;
+    position: relative;
+    width: 100%;
+    height: 750px;
 }
+
+.titreAcc{
+    z-index: 2;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    color: white;
+    background-color: #BF9169;
+    width: 900px;
+    box-shadow: rgba(255, 255, 255, 0.5) 3px 3px, rgba(255, 255, 255, 0.4) 6px 6px, rgba(255, 255, 255, 0.3) 9px 9px, rgba(255, 255, 255, 0.2) 12px 12px,rgba(255, 255, 255, 0.1) 15px 15px;
+    padding-top: 5px;
+    padding-bottom: 6px;
+}
+
+.paraAcc{
+    z-index: 2;
+    text-align: center;
+    position: absolute;
+    top: 65%;
+    left: 25%;
+    width: 895px;
+    font-size: 21px;
+    background-color: #BF9169;
+    padding: 5px;
+    color: white;
+    box-shadow: rgba(255, 255, 255, 0.8) 0px 0px 20px;
+}
+
+
+.imgCar{
+    height: 730px !important;
+}
+
 
 /* Taille des images */
 .affichageProduitsImg {
     width: 250px;
+    height: 280px !important;
 }
 
 .affichageImg{
@@ -103,20 +141,21 @@
     color: black;
 }
 
-/* Enlever la décoration / Couleur */
+/* Couleur */
 .linkAvis{
     text-decoration: none;
     color: black;
     white-space: nowrap;
+    font-size: 17px;
 }
 
-/* Enlever la décoration / Couleur */
+/* Couleur */
 .affichageProduits:hover {
     background-color: black solid 5px;
     color: black;
 }
 
-/* Enlever la décoration / Couleur */
+/*  Couleur */
 .affichageProduits2:hover {
     background-color: black solid 5px;
     color: black;
@@ -135,21 +174,31 @@
     white-space: nowrap;
 }
 
+.paraProdAcc{
+    font-size: 19px;
+}
+
+.linkNbAvis{
+    font-size: 17px;
+}
+
 /* caractéristique de l'image étoile */
 
 .tailleEtoile img{
-    width: 100px;
-    margin-right: 90px;
+    width: 110px;
     
 }
 
 .tailleEtoile {
     display: flex;
     align-items: center;
+    max-width: 100%;
+    overflow: hidden;
+    justify-content: space-between;
 }
 
 .tailleEtoileImg{
-    width: 100px;
+    width: 110px;
 }
 
 
@@ -168,7 +217,7 @@
 }
 
 .affichageProduits{
-    width: 265px;
+    width: 285px;
 
     margin-right: 10px;
     margin-bottom: 10px;
@@ -193,9 +242,15 @@
 
 
 
-.erreur-message{
-    color: black !important;
-    font-size: 17px;
+.erreurMessage{
+    color: red !important;
+    font-size: 18px;
+}
+
+.divMsgErr{
+    text-align: center;
+    margin-top: 10px !important;
+    margin-bottom: -38px !important;
 }
 
 /* met le logo o'barber au centre*/
@@ -214,12 +269,13 @@
 
 /* caractéristique du bouton ajouté au panier */
 .ajoutPanier {
-    background-color: gray;
+    background-color: #807266;
     color: white;
     padding: 10px 2px 10px 2px;
     margin-top: 4px;
     max-height: 100%;
     overflow: hidden;
+    font-size: 17px;
 }
 
 /* modifie la taille des titres */
@@ -244,32 +300,34 @@
 
 
 /* positionnement du titre pour l'huile */
-.text-labonnerecette{
+.titre-labonnerecette{
     position: absolute;
-    top: 652px;
-    left: 240px;
+    top: 452px;
+    left: 100px;
     z-index: 2;
 }
 
 /* positionnement du paragraphe pour l'huile */
 .text-labonnerecette2{
     position: absolute;
-    top: 689px;
-    left: 170px;
+    top: 500px;
+    left: 0px;
     z-index: 2;
     text-align: center;
+    font-size: 19px;
+    width: 500px;
 }
 
 /* caractéristique du bouton je découvre pour l'huile */
 .btn-jeDecouvre {
     position: absolute;
-    top: 742px;
-    left: 230px;
+    top: 580px;
+    left: 100px;
     z-index: 2;
     background-color: black;
     color: white;
     padding: 10px 95px 10px 95px;
-    margin-top: 4px;
+    border-radius: 1.5rem;
 }
 
 
@@ -280,35 +338,35 @@
 }
 
 /* positionnement du titre pour le beard roller */
-.text-beardroller{
+.titre-beardroller{
     position: absolute;
-    top: 562px;
-    left: 845px;
+    top: 522px;
+    left: 1370px;
     z-index: 2;
 }
 
 /* positionnement du paragraphe pour le beard roller */
 .text-beardroller2{
     position: absolute;
-    top: 595px;
-    left: 700px;
+    top: 560px;
+    left: 1220px;
     z-index: 2;
     text-align: center;
+    font-size: 19px;
+    width: 500px;
 }
 
 /* caractéristique du bouton je découvre pour le beard roller */
 .btn-jeDecouvre2 {
     position: absolute;
-    top: 644px;
-    left: 800px;
+    top: 660px;
+    left: 1320px;
     z-index: 2;
     background-color: black;
     color: white;
     padding: 10px 95px 10px 95px;
-    margin-top: 4px;
+    border-radius: 1.5rem;
 }
-
-
 
 /*
 * Header
@@ -319,32 +377,39 @@
     margin-left: -60px;
 }
 
-.recherche{
-position: relative;
-float: right;
-margin-top: -50px;
-margin-right: 10px;
+.recherche {
+    position: relative;
+    float: right;
+    margin-top: -50px;
+    margin-right: 10px;
+    text-decoration: none;
 }
 
 
 #head {
-    background-color: var(--black-color);
+    background-color: white;
     padding: 20px 0 10px 0;
+    /* border-bottom: solid #858585; */
     
 }
 
 #head .logo img{
-    margin-left: 130px;
-    width: 250px;
+    margin-left: 110px;
+    width: 280px;
 }
 
 #head .flex{
     display: flex;
 }
 
+.iconHeader{
+    font-size: 35px;
+    color: black;
+}
 
-
-
+.nav-link{
+    font-size: 20px;
+}
 
 #head .mini-nav a {
     margin-left: 55px;
@@ -362,51 +427,48 @@ margin-right: 10px;
     border: none;
     border-radius: 0;
     box-shadow: none;
-  }
+}
   
-  .dropdown-item {
+.dropdown-item {
     color: #495057;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     padding: 10px 20px;
     transition: background-color 0.2s ease-in-out;
-  }
+}
   
-  .dropdown-item:hover,
-  .dropdown-item:focus {
+.dropdown-item:hover,
+.dropdown-item:focus {
     background-color: #e9ecef;
     color: #495057;
     text-decoration: none;
-  }
+}
 
 
-  /*
-  * Footer
-  */
+/*
+* Footer
+*/
 
-/* maintient le footer en bas de la page */
+
+
+
+/* fin de page */
 footer {
-    position: relative;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-    background-color: black;
-    width: 100%;
+    
+    background-color: #BF9169;
+    
 }
 
 /* caractéristique du footer Taille / Positionnement / Position des éléments du corps */
 .contenu-footer {
-    width: 1200px;
+    width: 1400px;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    font-size: 20px;
     padding: 70px 0 100px;
+    height: 400px;
 }
 
-/* Taille de chaque div Taille 25 car 100% / 4 = 25 // Couleur / Marge */
+/* Taille de chaque div Taille / Marge */
 .bloc {
     width: 25%;
     margin: 0 30px;
@@ -414,205 +476,161 @@ footer {
 }
 
 /* Taille et Couleur du titre / Marge */
-.footer-apropos h3 {
-    font-size: 25px;
-    padding-bottom: 20px;
-    color: white;
-
-}
-
-/* Taille et Couleur du titre / Marge */
-.footer-livraison h3{
+.titreFooter{
     font-size: 25px;
     padding-bottom: 20px;
     color: white;
 }
 
-/* Taille et Couleur du titre / Marge  */
-.footer-securite h3{
-    font-size: 25px;
-    padding-bottom: 20px;
-    color: white;
-}
-
-/* Taille et Couleur du titre / Marge */
-.footer-question h3 {
-    font-size: 25px;
-    padding-bottom: 20px;
-    color: white;
-}
-
-/* Marge et Couleur du paragraphe */
-.footer-question p {
-    padding: 5px 0;
-    color: white;
-
-}
-
-/* Enleve les points de liste (la virgule fait office de && pour css) */
-.liste-apropos, .liste-livraison {
-    list-style-type: none;
-    
-}
-
-/* Marge */
-.liste-apropos li {
-    padding: 2px 0;
-}
-
-/* Enleve la décoration des liens / Couleur */
-.liste-apropos a {
+.linkFooter{
     text-decoration: none;
     color: white;
+    font-size: 20px;
 }
 
 /* Lorsqu'on survole les liens il est surligner / Enlever la décoration / Couleur */
-.liste-apropos a:hover {
+.linkFooter:hover {
     text-decoration: none;
     color: white;
     text-decoration : underline;
-}
-
-/* Marge  */
-.liste-livraison li {
-    padding: 2px 0;
-}
-
-/* Enleve la décoration des liens / Couleur */
-.liste-livraison a {
-    text-decoration: none;
-    color: white;
-}
-
-/*  Lorsqu'on survole les liens ils sont surligner / Enlever la décoration / Couleur  */
-.liste-livraison a:hover {
-    text-decoration: none;
-    color: white;
-    text-decoration : underline;
-}
-
-/* */
-.footer-livraison p {
-    color: white;
-    padding: 5px 0;
 }
 
 /* Marge et Couleur du paragraphe */
-.footer-securite p {
+.paraFooter {
     color: white;
-    padding: 5px 0;
+    font-size: 20px;
 }
 
-/* fin de page */
-footer {
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-    background-color: black;
-}
-
-/*
-* Contact
-*/
-
-.nosContacts h3{
+.paraCopyright{
+    margin: 0;
     text-align: center;
+    padding-bottom: 20px;
+    font-size: 18px;
+    color: white;
+    
 }
 
-.nosContacts p{
-    margin-left: 230px;
+/* style pour les pages du footer */
+
+.paraPagesFooter{
+    font-size: 19px;
 }
 
+.titrePagesFooter{
+    color: #BF9169;
+}
 
-/*
-* Connexion
-*/
+.titreGPagesFooter{
+    text-align: center;
+    color: #BF9169;
+}
 
-.leLienInscription  {
+.divPagesFooter{
+    margin-top: 30px;
+    margin-bottom: 40px;
+    width: 1150px;
+}
+
+.linkPagesFooter{
     text-decoration: none;
-    color: black;
+    color: #BF9169;
 }
 
-.leLienInscription:hover  {
-    text-decoration: none;
-    color: black;
-}
-
-.maDiv {
-    margin-bottom: 50px;
-}
-
-.erreur-message{
-    color: red;
-}
-
-.divInline{
-    display: inline-block;
-    float: none;
+.linkPagesFooter:hover{
+    text-decoration: underline;
 }
 
 
-.btnInscriptionPc{
-    margin-top: 20px;
-}
+
+
+
+
 
 /*
 * Inscription
 */
 #genre-select {
-    width: 540px;
-    height: 39px;
-    margin-left: -13px;
+    width: 100%;
+    height: 45px;
     background-color: white;
     border: #CED4DA solid 1px;
     color: #6C757D;
     border-radius: 5px;
     padding-left: 10px;
+    font-size: 20px !important;
+    
 }
 
-#genre-select {
-    margin-left: -15px;
+.btnInscription2{
+    margin-top: 20px;
+    background-color: #807266 !important;
+    height: 45px !important;
+    color: white;
+    font-size: 18px;
+}
+
+.btnInscription2:hover{
+    background-color: #807266 !important;
+    color: white;
+}
+
+.inputInscription{
+    height: 45px;
+    font-size: 20px !important;
+}
+
+.divSubmitInscription{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 16px;
 }
 
 /*
 * Un Produit
 */
 
+
 .imageDuProduit { 
     width:350px;
     height: 350px;
-    float: left;
     margin-right: 50px;
 }
 
+
+
 /* caractéristique de l'image étoile */
 .tailleEtoile2 img{
-    width: 100px;
-    margin-right: 90px;
+    width: 120px;
+    margin-right: 70px;
+    margin-bottom: 8px;
+
 }
 
-.tailleEtoile{
-    text-align: start;
-    max-height: 100%;
-    overflow: hidden;
-
-
+.tailleEtoile2 a{
+    font-size: 20px;
 }
 
 .lePrix2 {
     margin-top: 8px;
+    font-size: 20px;
+}
+
+.paraResume{
+    font-size: 20px;
 }
 
 
 /* caractéristique du bouton ajouté au panier */
 .ajoutPanier2 {
-    background-color: gray;
+    background-color: #807266;
     color: white;
     padding: 10px 2px 10px 2px;
     height: 45px;
     text-align: center;
     border-style:none;
     margin-top: 15px;
+
 }
 
 
@@ -620,13 +638,17 @@ footer {
     float: right;
 }
 
-.image-produit2 a {
+.divInfoUnProd{
+    width: 55%;
+}
+
+.divUnProd a {
     text-decoration: none;
     color: black;
     margin-left: -69px;
 }
 
-.image-produit2 a:hover {
+.divUnProd a:hover {
     text-decoration: none;
     color: black;
 }
@@ -635,182 +657,56 @@ footer {
 #quantite-produit2 {
     width: 40px;
     text-align: center;
+    width: 70px;
+    font-size: 20px;
+}
+
+.lblQteUnP{
+    font-size: 20px;
 }
 
 .pagination {
     display: inline-block;
     margin: 0 auto;
-  }
+    font-size: 18px;
+}
   
-  .pagination a {
+.pagination a {
     color: black;
     
     padding: 8px 16px;
     text-decoration: none;
-  }
+}
   
-  .pagination a.active {
-    background-color: #6C757D;
+.pagination a.active {
+    background-color: #807266;
     color: white;
     border-radius: 5px;
-  }
+}
   
-  .pagination a:hover:not(.active) {
+.pagination a:hover:not(.active) {
     background-color: #ddd;
     border-radius: 5px;
-  }
-
-
-
-/*
-* Panier
-*/
-
-.titrePanier{
-    color: rgb(45, 45, 52);
-}
-
-.lePrix{
-    text-align: left;
-    color: rgb(45, 45, 52);
-    margin-top: 60px;
-}
-
-.imageDuProduit2{
-    float:inline-start;
-    margin-left: -90px;
-
-    margin-top: 3px;
-}
-
-
-
-.imageDuProduit2{
-    float:inline-start;
-    margin-left: -90px;
-    width: 250px;
-    height: 250px;
-    margin-top: 3px;
-}
-
-.leTitre{
-    text-align: left;
-    margin-top: 10px;
-    color: rgb(66, 66, 66);
-}
-
-#quantite-produit {
-    width: 40px!important;
-    text-align: center;
-    border: 0px;
-    color: rgb(66, 66, 66);
-}
-
-#lblprod {
-    width: 40px;
-    color: rgb(66, 66, 66);
-}
-
-.divPselection select{
-    width: 150px;
-}
-
-.sousTotal{
-    color: rgb(45, 45, 52);
-    margin-left: 320px;
-}
-
-.trait {
-    width: 80%;
-    border-bottom: 1px solid rgb(128, 128, 128);
-    margin: 20px 0;
-}
-
-.imageCroix{
-    width: 20px!important;
-    margin-left: 388px;
-    margin-top: -75px;
-}
-
-/* caractéristique du bouton ajouté une commande */
-.ajoutCommande {
-    background-color: rgb(1, 169, 91);
-    color: white;
-    padding: 10px 2px 10px 2px;
-    margin-top: 35px;
-    text-align: center;
-    width: 280px;
-    text-decoration: none;
-}
-
-.linkAjoute{
-    text-decoration: none;
-}
-
-.linkAjoute:hover{
-    text-decoration: none;
-}
-
-.totalSomme, .totalLivraison {
-    color: rgb(33, 35, 34);
-}
-
-.leLienA{
-    text-decoration: none;
-    color: rgb(66, 66, 66);
-}
-
-.leLienA:hover{
-    text-decoration: underline;
-    color: rgb(66, 66, 66);
-}
-
-.text-center {
-    text-align: center;
-}
-
-.pVide {
-    font-size: 18px;
-    margin-left: 50%;
-    margin-bottom: 10px;
-}
-
-.lVide {
-    font-size: 14px;
-    margin-left: 50%;
-    color: white;
-    padding: 5px 15px 5px 15px;
-    text-decoration: none;
-    background-color: #6C757D;
-}
-
-.lVide:hover {
-    font-size: 14px;
-    margin-left: 50%;
-    color: rgb(167, 166, 166);
-    background-color: #4d5358;
-    text-decoration: none;
-
-}
-
-.divPVide{
-    margin-top: 50px;
-    margin-bottom: 30px;
 }
 
 .triCategorie{
     margin-top: 15px;
     margin-bottom: 30px;
-    height: 40px;
     text-align: center;
-    background-color: gray;
+    background-color: #807266;
     color: white;
     border-radius: 0.2em;
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
 }
 
 .triCategorie option {
     background-color: white;
+    
 }
+
+
 
 
 
@@ -841,35 +737,6 @@ footer {
     color: black;
 }
 
-
-/*
-* Profil
-*/
-.pTitre{
-    margin-top: 30px;
-    text-align: center;
-    margin-bottom: 30px;
-    
-}
-
-#envoyer-form{
-    margin-top: 20px;
-}
-
-.editInput{
-    width: 200px;
-}
-
-.dec{
-    margin-left: 400px;
-    margin-right: 30px;
-}
-
-.deca2{
-    margin-left: 30px;
-}
-
-
 /*
 * Recherche
 */
@@ -885,11 +752,7 @@ footer {
 }
   
 .suggestion:hover {
-    background-color: #f1f1f1;
-}
-
-.recherche{
-    text-decoration: none;
+    background-color: #f1f1f1 ;
 }
 
 .suggestions-container {
@@ -900,91 +763,53 @@ footer {
     background-color: #ffffff;
 }
 
+.inputRecherche{
+    width: 300px;
+}
+
+
 /*
-* Historique Commandes
+* Produits
 */
 
+.linkNewProd{
+    text-decoration: none;
+}
 
-
-.titreHCmd{
-    margin-top: 50px;
-    background-color: #dddddd;
-    padding: 1em;
-    font-size: 20px;
+.paraNewProd{
+    padding: 10px; 
+    background-color: #2D4B73;
+    width: 40px;
+    font-size: 12px;
     text-align: center;
-    font-weight: 500;
+    border-radius: 1rem;
 }
 
-.contenuHCmd{
-    margin-top: 50px;
-    background-color: #eeeeee;
-    padding: 1em;
-}
 
-.lblStatutHCmd{
-    color: #2d2d2d;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: .10rem;
-    line-height: 22px;
-}
-
-.lblStatut{
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: .6px;
-    line-height: 22px;
-}
-
-.trait2 {
-    width: 100%;
-    border-bottom: 1px solid rgb(128, 128, 128);
-    margin: 20px 0;
-}
-
-.lblHCmd{
-    color: #2d2d2d;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .04rem;
-}
-
-.lblRCmd{
-    color: #2d2d2d;
-    font-size: 15px;
-    font-weight: 600;
+.divNewProd{
+    display: flex;
+    justify-content: end;
+    margin-right: 10px !important;
 }
 
 
 
-.divVoirCmd {
-    float: right;
-    margin-top: -55px;
-
+.iconPlus{
+    color: white;
 }
 
-.divVoirCmd a {
-    text-decoration: none;
-    color: #2d2d2d;
-    padding: 1rem;
-    background-color: white;
-    border:#cccccc 2px solid;
-    
-}
-.divVoirCmd a:hover {
-    text-decoration: none;
-    color: #2d2d2d;
-    padding: 1rem;
-    background-color: #cccccc;
-    border:#cccccc 2px solid;
-    
+
+.iconEditer{
+    font-size: 20px;
+    color: #2D4B73;
 }
 
-.divISCmd p{
-    display: inline-block;
+.divEditer{
+    text-align: end;
+    margin-top: 5px;
 }
 
-.imgProdCmd{
-    width: 100px;
-    margin-right: 10px;
+.msgInfo{
+    text-align: center;
 }
+

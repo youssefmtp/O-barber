@@ -11,20 +11,16 @@
     /*
     * Attributs
     */
-    private int $refCommande, $idClient, $idTransporteur;
-    private datetime $dateCommande, $dateLivraison;
+    private int $refCommande, $idClient;
     private string $adLivraison, $cpLivraison, $villeLivraison; 
-
-
+    private ?int $idTransporteur = null;
 
     /*
     * Constructeur
-    */
-    public function __construct(int $uneRefCommande, int $unIdClient, int $unIdTransporteur, datetime $uneDateCommande, datetime $uneDateLivraison, string $uneAdLivraison, string $unCpLivraison, string $uneVilleLivraison) {
+    */ 
+    public function __construct(int $uneRefCommande = 0, int $unIdClient = 0, ?int $unIdTransporteur = null, string $uneAdLivraison = "Saisir une adresse", string $unCpLivraison = "Saisir un code postal", string $uneVilleLivraison = "Saisir une ville") {
         $this->refCommande = $uneRefCommande;
         $this->idClient = $unIdClient;
-        $this->dateCommande = $uneDateCommande;
-        $this->dateLivraison = $uneDateLivraison;
         $this->idTransporteur = $unIdTransporteur;
         $this->adLivraison = $uneAdLivraison;
         $this->cpLivraison = $unCpLivraison;
@@ -33,7 +29,7 @@
 
 
     // Accesseur 
-    public function  getRefCommande():int {
+    public function getRefCommande():int {
         return $this->refCommande;
     }
 
@@ -106,7 +102,7 @@ class Cmd extends Commande {
     * Attributs
     */
     private int $refCommande;
-    private datetime $uneDateCmd, $dateActuelle;
+    private datetime $dateCmd, $dateActuelle;
     private array $photos;
     private Prod $leProd;
     private string $libelle;
@@ -171,3 +167,4 @@ class Cmd extends Commande {
     }
 
 }
+

@@ -1,0 +1,13 @@
+/*
+* Contact
+*/
+
+.divGContact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paraContact{
+    font-size: 20px;
+}

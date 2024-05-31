@@ -11,6 +11,13 @@
  */
 
 // attributs techniques d'accès à la bdd
+// const HOST = 'sql312.infinityfree.com'; // adresse IP de l'hôte 
+// const PORT = '3306'; // 3306 ou 3307:MariaDB / 3308: MySQL
+// const DBNAME = 'if0_36357325_base_site_ecommerce'; // nom de la bdd
+// const CHARSET = 'utf8'; // méthode d'encodage de caractères
+// const LOGIN = 'if0_36357325'; // login pour la connexion
+// const MDP = 'adminObarber34';  // password pour la connexion
+
 const HOST = '127.0.0.1'; // adresse IP de l'hôte 
 const PORT = '3307'; // 3306 ou 3307:MariaDB / 3308: MySQL
 const DBNAME = 'base_site_ecommerce'; // nom de la bdd

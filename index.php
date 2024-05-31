@@ -13,7 +13,7 @@
 // enregistrement de la racine du site
 define('SERVER_URL', "../../../..");
 define('ROOT', __DIR__);
-define('DEFAULT_CONTROLLER', 'view');
+define('DEFAULT_CONTROLLER', 'View');
 define('DEFAULT_ACTION', 'accueil');
 
 
@@ -49,6 +49,7 @@ foreach($params as $key => $value){
 // vérifie que le controller requêté existe
 // sinon page d'erreur
 // idem pour l'action
+
 $controller .= 'Controller'; // la variable controller ne contenait qu'une partie du nom du fichier, on le complète
 $filename = ROOT.'/controller/'.$controller.'.php';
 //print_r('filename = '.$filename);

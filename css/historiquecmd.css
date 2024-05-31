@@ -1,0 +1,88 @@
+/*
+* Historique Commandes
+*/
+
+
+
+.titreHCmd{
+    margin-top: 50px;
+    border: #dddddd 1px solid;
+    padding: 1em;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.contenuHCmd{
+    margin-top: 50px;
+    background-color: #eeeeee;
+    padding: 1em;
+}
+
+.lblStatutHCmd{
+    color: #2d2d2d;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .10rem;
+    line-height: 22px;
+}
+
+.lblStatut{
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: .6px;
+    line-height: 22px;
+}
+
+.trait2 {
+    width: 100%;
+    border-bottom: 1px solid rgb(128, 128, 128);
+    margin: 20px 0;
+}
+
+.lblHCmd{
+    color: #2d2d2d;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .04rem;
+}
+
+.lblRCmd{
+    color: #2d2d2d;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+
+.divVoirCmd {
+    float: right;
+    margin-top: -55px;
+
+}
+
+.divVoirCmd a {
+    text-decoration: none;
+    color: #2d2d2d;
+    padding: 1rem;
+    background-color: white;
+    border:#cccccc 2px solid;
+    
+}
+.divVoirCmd a:hover {
+    text-decoration: none;
+    color: #2d2d2d;
+    padding: 1rem;
+    background-color: #cccccc;
+    border:#cccccc 2px solid;
+    
+}
+
+.divISCmd p{
+    display: inline-block;
+}
+
+.imgProdCmd{
+    width: 120px;
+    margin-right: 10px;
+}

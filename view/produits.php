@@ -7,8 +7,8 @@ include 'header.php';
         <div class="js-filter-form">
             
             <div class="row justify-content-center" >
-                <div class="col-4 text-center huiles">
-                    <select class="triCategorie" id="triCategorie1" style="width:auto" name="triCategorie1">
+                <div class="col-4 text-center">
+                    <select class="triCategorie" id="triCategorie1" name="triCategorie1">
                         <option value="" hidden>Huiles</option>
                         <?php
                         $afficheId = false;
@@ -22,8 +22,8 @@ include 'header.php';
                     </select>
                 </div>
 
-                <div class="col-4 text-center rassoires">
-                    <select class="triCategorie" id="triCategorie2" style="width:auto" name="triCategorie2">
+                <div class="col-4 text-center">
+                    <select class="triCategorie" id="triCategorie2" name="triCategorie2">
                         <option value="" hidden>Rassoires</option>
                         <?php
                         $afficheId = false;
@@ -37,8 +37,8 @@ include 'header.php';
                     </select>
                 </div>
 
-                <div class="col-4 text-center accessoires">
-                    <select class="triCategorie" id="triCategorie3" style="width:auto" name="triCategorie3">
+                <div class="col-4 text-center">
+                    <select class="triCategorie" id="triCategorie3" name="triCategorie3">
                         <option value="" hidden>Accessoires</option>
                         
                         <?php
@@ -54,6 +54,18 @@ include 'header.php';
                 </div>
             </div>
         </div>
+
+        <?php
+
+            if(isset($_SESSION['idRole'])){
+                if($_SESSION['idRole'] == 1){
+
+                    echo '<div class="divNewProd" id="idRole" data-idrole="' . htmlspecialchars($_SESSION['idRole']) . '">
+                        <a href="'.SERVER_URL .'/nouveau-produit/" class="linkNewProd"/> <p class="paraNewProd" id="plusIcon"><i class="fas fa-solid fa-plus iconPlus"></i></p> </a>
+                    </div>';
+                }
+            }
+        ?>
 
         <div class="container js-filter-content">
             <!-- Affichage des produits -->

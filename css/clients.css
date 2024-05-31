@@ -1,0 +1,72 @@
+.tabCli{
+    width: 80% !important; 
+    text-align: center;
+    margin-top: 40px;
+}
+
+.entete{
+    background-color: #2D4B73;
+}
+
+.lblEte{
+    color: white !important;
+    font-size: 20px;
+}
+
+.lblClients{
+    font-size: 20px;   
+}
+
+.divEte{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titreClient{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.linkClient{
+    text-decoration: none;
+    color: #2D4B73;
+}
+
+.linkClient:hover{
+    text-decoration: underline;
+}
+
+.iconTrash:hover{
+    color: red;
+}
+
+.divModal{
+    position: fixed; 
+    top: 35%; 
+    left: 35%;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    z-index: 2;
+}
+
+.btnValider{
+    margin-right: 5px !important;
+}
+
+.assombriLaPage{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1; 
+}
+
+.message-info{
+    text-align: center;
+}

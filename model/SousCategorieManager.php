@@ -24,6 +24,39 @@
 
 
     /**
+     * récupère dans la bbd tous les sous-categories des produits 
+     *
+     * @return array
+     */
+    public static function getLesSousCategs(): array
+    {
+        try{
+            if(self::$cnx == null) {
+                self::$cnx = DbManager::getConnexion();
+            }
+
+            $sql = 'Select id, libelle, idCateg';
+            $sql .= ' From sous_categorie';
+            $stmt = self::$cnx->prepare($sql);
+            $stmt->execute();
+            
+            $stmt->setFetchMode(PDO::FETCH_OBJ);
+            while($row = $stmt->fetch()) {
+
+                self::$uneSousCateg = new SousCategorie($row->id, $row->libelle, $row->idCateg);
+
+                self::$lesSousCategs[] = self::$uneSousCateg;
+            }
+            unset($cnx);
+        } catch (PDOException $e) {
+            die('Erreur : '. $e->getMessage());
+        }
+        
+        return self::$lesSousCategs;
+    }
+
+
+    /**
      * récupère dans la bbd tous les produits de la sous catégorie huiles 
      *
      * @return array

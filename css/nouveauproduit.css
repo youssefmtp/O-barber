@@ -1,0 +1,52 @@
+.titreNp{
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.divP{
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.selectCateg{
+    margin-top: 29.4px !important;
+    font-size: 20px !important;
+}
+
+.divBtnValider{
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 20px    
+}
+
+.btnAjouter{
+    color: white;
+    background-color: #2D4B73;
+    padding: 10px;
+    border-radius: 0.75rem;
+    width: 100px;
+    border: white 1px solid;
+    border-style: none;
+}
+
+.msgErreur{
+    color: red;
+    text-align: center;
+}
+
+.msgInfo{
+    text-align: center;
+}
+
+.divGAdd{
+    margin-top: 40px;
+    margin-bottom: 100px !important;
+}
+
+.lblAddProd{
+    font-size: 20px;
+}
+
+.inputNvProd{
+    font-size: 20px !important;
+}

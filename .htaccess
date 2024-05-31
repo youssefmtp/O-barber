@@ -1,6 +1,10 @@
 # Turn rewrite engine on
 Options +FollowSymlinks
 RewriteEngine on
+# RewriteCond %{HTTP:X-Forwarded-Proto} !https
+# RewriteCond %{HTTPS} off
+# RewriteCond %{HTTP:CF-Visitor} !{"scheme":"https"}
+# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # map neat URL to internal URL
 RewriteRule ^contact/$   index.php?controller=view&action=contact [nc]
@@ -10,7 +14,7 @@ RewriteRule ^erreur/$   index.php?controller=view&action=erreur [nc]
 RewriteRule ^inscription/$   index.php?controller=view&action=inscription [nc]
 RewriteRule ^panier/$   index.php?controller=view&action=panier [nc]
 RewriteRule ^login/$   index.php?controller=utilisateur&action=seconnecter [nc]
-RewriteRule ^commande/$   index.php?controller=view&action=commande [nc]
+RewriteRule ^commande/$   index.php?controller=commande&action=newCommande [nc]
 RewriteRule ^recapitulatif-commande/$   index.php?controller=commande&action=show [nc]
 RewriteRule ^produits/details/([0-9]+)/$ index.php?controller=produit&action=showUnProd&id=$1 [nc,qsa]
 RewriteRule ^produits/details/([0-9]+)/ajouter-panier/([0-9]+)/([0-9]+)/$ index.php?controller=produit&action=add&id=$1&qte=$3 [nc,qsa]
@@ -30,6 +34,26 @@ RewriteRule ^recherche/([a-zA-Z0-9]+)/$  index.php?controller=produit&action=sho
 RewriteRule ^produits/produitRechercher/([a-zA-Z0-9]+)/$  index.php?controller=produit&action=showProduitRecherche&valeurRecherche=$1 [nc,qsa] 
 RewriteRule ^produitRechercher/([a-zA-Z0-9]+)/$  index.php?controller=produit&action=showProduitRecherche&valeurRecherche=$1 [nc,qsa]
 RewriteRule ^panier/refresh/([0-9]+)/([0-9]+)/$  index.php?controller=produit&action=actualisePanier&index=$1&qte=$2 [nc,qsa]
+RewriteRule ^panier/supprimerlepanier/$ index.php?controller=produit&action=deletePanier [nc]
+RewriteRule ^detailcommande/([0-9]+)/$ index.php?controller=commande&action=detailCmd&refCmd=$1 [nc,qsa]
+RewriteRule ^nouveau-produit/$   index.php?controller=view&action=newproduit [nc]
+RewriteRule ^produits/modifier/([0-9]+)/$ index.php?controller=produit&action=edit&id=$1 [nc,qsa]
+RewriteRule ^produit/nouveau/$   index.php?controller=produit&action=addProd [nc]
+RewriteRule ^produits/modifier/([0-9]+)/supprimer-produit/([0-9]+)/$ index.php?controller=produit&action=deleteProd&id=$1&idP=$2 [nc,qsa]
+RewriteRule ^editproduit/$ index.php?controller=produit&action=updateProd [nc,qsa]
+RewriteRule ^clients/$  index.php?controller=utilisateur&action=showClient [nc]
+RewriteRule ^clients/supprimer-client/([0-9]+)/$ index.php?controller=utilisateur&action=deleteUser&id=$1 [nc,qsa]
+RewriteRule ^clients/resetPassword/([0-9]+)/$ index.php?controller=utilisateur&action=resetPasswordUser&id=$1 [nc,qsa] 
+RewriteRule ^clients/changePassword/([0-9]+)/$ index.php?controller=utilisateur&action=changePasswordUser&id=$1 [nc,qsa]
+RewriteRule ^newpassword/$   index.php?controller=utilisateur&action=newpassword [nc]
+RewriteRule ^conditionsdevente/$   index.php?controller=view&action=conditionsdevente [nc]
+RewriteRule ^livraisonetretour/$   index.php?controller=view&action=livraisonetretour [nc]
+RewriteRule ^politiquedeconfidentialite/$   index.php?controller=view&action=politiqueConfidentialite [nc]
+RewriteRule ^mentionlegales/$   index.php?controller=view&action=mentionLegales [nc] mentionLegales
+
+
+
+
 
 
 

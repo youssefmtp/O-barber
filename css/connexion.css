@@ -1,0 +1,64 @@
+/*
+* Connexion
+*/
+
+.leLienInscription  {
+    text-decoration: none;
+    color: white;
+}
+
+.leLienInscription:hover  {
+    text-decoration: none;
+    color: white;
+}
+
+.maDiv {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    justify-content: center;
+    display: flex;
+}
+
+.divMsgErr{
+    margin-top: 10px;
+    margin-bottom: -53px;
+
+}
+
+.erreurMessage{
+    color: red !important;
+    font-size: 18px;
+}
+
+.divInline{
+    display: inline-block;
+    float: none;
+}
+
+.btnConnexion{
+    background-color: #807266 !important;
+    color: white !important;
+    height: 45px !important;
+}
+
+.btnInscription{
+    background-color: #5E686A !important;
+    height: 45px !important;
+}
+
+.laLegend{
+    font-size: 30px;
+}
+
+.inputConnexion{
+    width: 710px;
+    height: 45px;
+    font-size: 20px !important;
+}
+
+.divBtns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}

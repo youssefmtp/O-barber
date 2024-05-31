@@ -17,46 +17,53 @@
         
         <footer>
 
-            <div class="contenu-footer leFooter">
+            <div class="contenu-footer">
                 <div class="bloc footer-apropos">
-                    <h3>À propos</h3>
-                    <ul class="liste-apropos">
-                        <li><a href="#">Conditions générales de vente</a></li>
-                        <li><a href="#">Livraison et politque de retour</a></li>
-                        <li><a href="#">Politique de confidentialité</a></li>
-                        <li><a href="#">Mention légales</a></li>
-                    </ul>
+                    <h3 class="titreFooter">À propos</h3>
+                    <p> <a href="<?= SERVER_URL ?>/conditionsdevente/" class="linkFooter">Conditions générales de vente</a> </p>
+                    <p> <a href="<?= SERVER_URL ?>/livraisonetretour/" class="linkFooter">Livraison et politque de retour</a></p> 
+                    <p> <a href="<?= SERVER_URL ?>/politiquedeconfidentialite/" class="linkFooter">Politique de confidentialité</a></p> 
+                    <p> <a href="<?= SERVER_URL ?>/mentionlegales/" class="linkFooter">Mentions légales</a></p>
                 </div>
 
                 <div class="bloc footer-securite">
-                    <h3>Sécuriser</h3>
-                        <p>Vos informations sont crypter et sécuriser d'ailleur nous 
-                            ne conservons aucune données bancaires.
-                        </p>
+                    <h3 class="titreFooter">Sécuriser</h3>
+                    <p class="paraFooter">Vos informations sont crypter et sécuriser d'ailleur nous 
+                        ne conservons aucune données bancaires.
+                    </p>
                 </div>
 
                 <div class="bloc footer-livraison">
-                    <h3>Livraison rapide</h3>
-                    <ul class="liste-livraison">
-                        <li><a href="#">Suivre ma commande</a></li>
-                    </ul>
-                    <p>Livrer en 48/72 heures</p>
-                    <p>Avec suivie de livraison</p>
+                    <h3 class="titreFooter">Livraison rapide</h3>
+                    <?php if(isset($_SESSION['prenom'])){
+                            echo '<p> <a href="'. SERVER_URL .'/recapitulatif-commande/" class="linkFooter">Suivre ma commande</a></p>';
+                        } else {
+                            echo '<p> <a href="'. SERVER_URL .'/connexion/" class="linkFooter">Suivre ma commande</a></p>';
+                        }
+                        
+                    ?>
+                        
+                    
+                    <p class="paraFooter"> Livrer en 48/72 heures</p>
+                    <p class="paraFooter">Avec suivie de livraison</p>
                 </div>
 
                 <div class="bloc footer-question">
-                    <h3>Une question ?</h3>
-                    <p>Téléphone : 09 00 00 00 00</p>
-                    <p>E-mail : support@obarber.fr</p>
+                    <h3 class="titreFooter">Une question ?</h3>
+                    <p class="paraFooter">Téléphone : 09 00 00 00 00</p>
+                    <p class="paraFooter">E-mail : support@obarber.ovh</p>
                 </div>
 
                 
-                <!-- <div>
-                    <p>© 2023 O'barber Tous droits réserver.</p>
-                </div> -->
+                
+            </div>
+
+            <div class="divCopyright">
+                <p class="paraCopyright">© 2024 O'barber Tous droits réserver.</p>
             </div>
 
         </footer>
+        
         <!-- Fin du footer -->
             
           

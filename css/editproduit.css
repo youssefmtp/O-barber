@@ -1,0 +1,54 @@
+.titreEp{
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.btnModifier{
+    color: white;
+    background-color: #2D4B73;
+    padding: 10px;
+    border-radius: 0.75rem;
+    width: 100px;
+    border: white 1px solid;
+    border-style: none;
+}
+
+.btnSupprimer{
+    color: white;
+    background-color: #D2190B;
+    padding: 10px;
+    border-radius: 0.75rem;
+    width: 110px;
+    border: white 1px solid;
+    border-style: none;
+}
+
+.selectCateg{
+    margin-top: 29.4px !important;
+    font-size: 20px !important;
+}
+
+.divP{
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.divBtnsAction{
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 80px    
+}
+
+
+.divGEdit{
+    margin-top: 40px;
+    margin-bottom: 100px !important;
+}
+
+.lblEdit{
+    font-size: 20px;
+}
+
+.inputEdit{
+    font-size: 20px !important;
+}

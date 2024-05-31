@@ -1,8 +1,5 @@
 function majQuantite(index, nvlQte){
 
-    console.log(index);
-    console.log(nvlQte);
-
     fetch('refresh/'+  index + '/' +  nvlQte + '/',{
         method: 'GET'
     })
@@ -17,13 +14,7 @@ function majQuantite(index, nvlQte){
 
 
 
-
-
-
-
-
 function ajouterAuPanier(idProduit){
-
 
     var qte = 1;
     var qteChoisie = document.getElementById('quantite-produit2');
@@ -35,11 +26,8 @@ function ajouterAuPanier(idProduit){
 
         if(1 < qteChoisie.options[choix].value ){
             qte = qteChoisie.options[choix].value;
-            console.log(qteChoisie.options[choix].value);
         }
-    }
-
-    
+    }    
 
     fetch('ajouter-panier/' + idProduit + '/' + qte + '/', {
         method: 'GET'
@@ -49,8 +37,12 @@ function ajouterAuPanier(idProduit){
             throw new Error('Réponse du serveur non valide');
         }
 
+        
+
         // Rediriger vers la page du panier
         window.location.href = '/panier/';
+
+        
     })
     .catch(error => console.error('Erreur :', error));
 }
@@ -69,4 +61,5 @@ function supprimerDuPanier(index){
     })
     .catch(error => console.error('Erreur :', error));
 }
+
 

@@ -8,6 +8,13 @@ var produitParPage = 12;
 var totalProduits = 0;
 var pageCourante = 1;
 
+var idRole = document.getElementById("idRole");
+if(idRole !== null){
+    var idRoleVal = idRole.getAttribute("data-idrole");
+}
+
+
+
 
 var selectElements = [selectElement1, selectElement2, selectElement3];
 
@@ -127,13 +134,34 @@ function triProduits(filtre, page) {
 
             produitsPage.forEach((unProduit, index) => {
                 var produitDiv = document.createElement('div');
-                produitDiv.className = 'card col-3 affichageProduits';
+                produitDiv.className = 'card col affichageProduits';
 
-                produitDiv.innerHTML = `
+                if(idRoleVal == 1){
+                    produitDiv.innerHTML = `
+                    <div class="divEditer">
+                        <a href="/produits/modifier/${unProduit.id}/"> <i class="fas fa-solid fa-pen-to-square iconEditer"></i> </a>
+                    </div>
                     <a href="/produits/details/${unProduit.id}/"> <img src="/page/${unProduit.photoProd}" alt="${unProduit.libelle}" class="affichageProduitsImg"> </a>
 
                     <div class="titre-produit">
-                        <a href="/produits/details/${unProduit.id}/" class="linkLi" > <p>${getTitreProduit(unProduit)}</p> </a>
+                        <a href="/produits/details/${unProduit.id}/" class="linkLi" > <p class="paraProdAcc">${getTitreProduit(unProduit)}</p> </a>
+                    </div>
+
+                    <div class="tailleEtoile">
+                        <img src="/img/etoile-avis.png" alt="Etoile" class="tailleEtoileImg">
+                        <a href="#" class="linkAvis">0 avis</a>
+                    </div>
+
+                    
+                    <a href="#"> <p class="ajoutPanier" onclick="ajouterAuPanier(${unProduit.id})" >Ajouter au panier ${Number(unProduit.prix).toFixed(2)}€ </p>  </a>
+                    </div> `;
+                } else{
+
+                    produitDiv.innerHTML = `
+                    <a href="/produits/details/${unProduit.id}/"> <img src="/page/${unProduit.photoProd}" alt="${unProduit.libelle}" class="affichageProduitsImg"> </a>
+
+                    <div class="titre-produit">
+                        <a href="/produits/details/${unProduit.id}/" class="linkLi" > <p class="paraProdAcc">${getTitreProduit(unProduit)}</p> </a>
                     </div>
 
                     <div class="tailleEtoile">
@@ -143,6 +171,9 @@ function triProduits(filtre, page) {
 
                     <a href="#" > <p class="ajoutPanier" onclick="ajouterAuPanier(${unProduit.id})" >Ajouter au panier ${Number(unProduit.prix).toFixed(2)}€</p> </a>
                 </div> `;
+                }
+
+                
 
                 row.appendChild(produitDiv);
 
@@ -156,7 +187,7 @@ function triProduits(filtre, page) {
             });
 
             totalProduits = data.length;
-            console.log(page);
+            
 
             afficherPagination(Math.ceil(totalProduits / produitParPage), page);
 
@@ -168,3 +199,5 @@ function triProduits(filtre, page) {
         console.error('Erreur :', error);
     });
 }
+
+

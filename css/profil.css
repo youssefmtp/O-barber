@@ -1,0 +1,70 @@
+/*
+* Profil
+*/
+.pTitre{
+    margin-top: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 30px;
+    
+}
+
+#envoyer-form{
+    margin-top: 20px;
+}
+
+.editInput{
+    width: 200px;
+}
+
+.messAlerte{
+    width: 600px;
+    text-align: center;
+}
+
+.divMess{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iptProfil{
+    width: 500px !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+}
+
+.divProfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lblProfil{
+    font-size: 20px;
+}
+
+.divGroupe{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.btnModifier{
+    background-color: #807266 !important;
+    color: white !important;
+    height: 45px !important;
+    font-size: 20px !important;
+}
+
+.btnModifier:hover{
+    background-color: #64594f !important;
+    color: #cccccc !important;
+    height: 45px !important;
+    font-size: 20px;
+}
+
+.divBtn{
+    display: flex;
+    justify-content: center;
+}

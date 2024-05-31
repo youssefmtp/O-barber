@@ -90,11 +90,15 @@ class ViewController extends Controller {
      * params : tableau des paramètres
      */
     public static function bienvenue($params){
+        if(isset($_SESSION['mail'])) {
+            // appelle la vue
+            $view = ROOT.'/view/bienvenue.php';
+            $params = array();
+            self::render($view, $params);
 
-        // appelle la vue
-        $view = ROOT.'/view/bienvenue.php';
-        $params = array();
-        self::render($view, $params);
+        } else {
+            header('Location: '.SERVER_URL.'/connexion/');
+        }
     }
 
     /**
@@ -102,23 +106,14 @@ class ViewController extends Controller {
      * params : tableau des paramètres
      */
     public static function profil($params){
-
-        // appelle la vue
-        $view = ROOT.'/view/profil.php';
-        $params = array();
-        self::render($view, $params);
-    }
-
-    /**
-     * Action qui affiche la page commande
-     * params : tableau des paramètres
-     */
-    public static function commande($params){
-
-        // appelle la vue
-        $view = ROOT.'/view/commande.php';
-        $params = array();
-        self::render($view, $params);
+        if(isset($_SESSION['mail'])) {
+            // appelle la vue
+            $view = ROOT.'/view/profil.php';
+            $params = array();
+            self::render($view, $params);
+        } else {
+            header('Location: '.SERVER_URL.'/connexion/');
+        }
     }
 
 
@@ -128,11 +123,88 @@ class ViewController extends Controller {
      */
     public static function mescommande($params){
 
+        if(isset($_SESSION['mail'])) {
+
+            // appelle la vue
+            $view = ROOT.'/view/historiquecommande.php';
+            $params = array();
+            self::render($view, $params);
+
+        } else {
+            header('Location: '.SERVER_URL.'/connexion/');
+        }
+    }
+
+    /**
+     * Action qui affiche la page nouveau produit
+     * params : tableau des paramètres
+     */
+    public static function newproduit($params){
+        if(isset($_SESSION['mail'])) {
+            if($_SESSION['idRole'] == 1){
+                $lesSousCategs = SousCategorieManager::getLesSousCategs();
+
+                // appelle la vue
+                $view = ROOT.'/view/nouveauproduit.php';
+                $params = array();
+                $params = [
+                    'lesSousCategs' => $lesSousCategs
+                ];
+                self::render($view, $params);
+            } else {
+                header('Location: '.SERVER_URL.'/erreur/');
+            }
+        } else {
+            header('Location: '.SERVER_URL.'/connexion/');
+        }
+    } 
+
+    /**
+     * Action qui affiche la page des conditions générales de ventes
+     * params : tableau des paramètres
+     */
+    public static function conditionsdevente($params){
+
         // appelle la vue
-        $view = ROOT.'/view/historiquecommande.php';
+        $view = ROOT.'/view/conditionsgenerale.php';
         $params = array();
         self::render($view, $params);
     }
 
+    /**
+     * Action qui affiche la page de livraison et politque de retour
+     * params : tableau des paramètres
+     */
+    public static function livraisonetretour($params){
+
+        // appelle la vue
+        $view = ROOT.'/view/livraisonEtRetour.php';
+        $params = array();
+        self::render($view, $params);
+    }
+
+    /**
+     * Action qui affiche la page politique de confidentialité
+     * params : tableau des paramètres
+     */
+    public static function politiqueConfidentialite($params){
+
+        // appelle la vue
+        $view = ROOT.'/view/politiqueDeConfidentialite.php';
+        $params = array();
+        self::render($view, $params);
+    }
+
+    /**
+     * Action qui affiche la page mention légales
+     * params : tableau des paramètres
+     */
+    public static function mentionLegales($params){
+
+        // appelle la vue
+        $view = ROOT.'/view/mentionLegal.php';
+        $params = array();
+        self::render($view, $params);
+    }
 
 }

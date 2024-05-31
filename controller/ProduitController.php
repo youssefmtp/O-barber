@@ -62,13 +62,13 @@ class ProduitController extends Controller {
          
         }       
 
-    $view = ROOT.'/view/unproduit.php';
-    // appelle la vue
-    $params = array();
-    $params = [
-        'unProduit' => $unProduit
-    ];
-    self::render($view, $params);
+        $view = ROOT.'/view/unproduit.php';
+        // appelle la vue
+        $params = array();
+        $params = [
+            'unProduit' => $unProduit
+        ];
+        self::render($view, $params);
     }
 
     /**
@@ -82,7 +82,6 @@ class ProduitController extends Controller {
         if (isset($_GET['id']) && !empty($_GET['id'])){
             // Filtre les variables GET pour enlever les caractères indésirables
             $idProduit = self::nettoyer($_GET['id']);
-            var_dump($idProduit);
             $unProduit = ProduitManager::getProduitById($idProduit);
         
         
@@ -90,19 +89,6 @@ class ProduitController extends Controller {
             if (isset($_GET['qte']) && !empty($_GET['qte'])){
                 $qte = self::nettoyer($_GET['qte']);
             }
-
-
-            // $produit = array(
-            //     'id' =>$unProduit->getId(),
-            //     'photo' =>$unProduit->getPhotoProd(),
-            //     'prix' =>$unProduit->getPrix(),
-            //     'marque' =>$unProduit->getMarque(),
-            //     'libelle' => $unProduit->getLibelle(),
-            //     'quantite' => $qte,
-            //     'qteEnStock' => $unProduit->getQteEnStock()
-            // ); 
-
-            // $_SESSION['panier'][] = $produit;
 
             $produitExiste = false;
 
@@ -146,7 +132,7 @@ class ProduitController extends Controller {
     public static function delete($params){
         // Vérifier si l'index de l'article à supprimer est passé dans l'URL
         if (isset($_GET['index'])) {
-        $index = $_GET['index'];
+        $index = self::nettoyer($_GET['index']);
 
         // Vérifier si le panier existe et si l'index est valide
         if (isset($_SESSION['panier']) && array_key_exists($index, $_SESSION['panier'])) {
@@ -251,8 +237,8 @@ class ProduitController extends Controller {
 
     public static function actualisePanier($params){
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            $index = $_GET['index'];
-            $nouvelleQuantite = $_GET['qte'];
+            $index = self::nettoyer($_GET['index']);
+            $nouvelleQuantite = self::nettoyer($_GET['qte']);
         
             // Mettez à jour la quantité dans la session ou dans votre base de données, selon votre application
             $_SESSION['panier'][$index]['quantite'] = $nouvelleQuantite;
@@ -266,6 +252,220 @@ class ProduitController extends Controller {
     }
 
 
+    /**
+     * Action qui supprime le panier
+     * params : tableau des paramètres
+     */
+    public static function deletePanier($params){
+        unset($_SESSION['panier']);
+
+    }
+
+    /**
+     * Action qui affiche la page de mofication du produit
+     * params : tableau des paramètres
+     */
+    public static function edit($params){
+        if($_SESSION['idRole'] == 1) {
+
+            if(isset($_GET['id'])) {
+
+                // Filtre les variables GET pour enlever les caractères indésirables
+                $idProduit = self::nettoyer(filter_var($_GET['id'], FILTER_VALIDATE_INT));
+    
+                $unProduit = ProduitManager::getProduitById($idProduit); 
+                $lesSousCategs = SousCategorieManager::getLesSousCategs();
+
+                // appelle la vue
+                $view = ROOT.'/view/editproduit.php';
+                $params = [
+                    'unProduit' => $unProduit,
+                    'lesSousCategs' => $lesSousCategs
+                ];
+                self::render($view, $params);
+            } else{
+                header('Location: '.SERVER_URL.'/erreur/');
+            }
+
+        } else {
+            header('Location: '.SERVER_URL.'/erreur/');
+        }
+
+    }
+
+    /**
+     * Action qui ajoute un nouveau produit
+     * params : tableau des paramètres
+     */
+    public static function addProd($params){
+        $erreur = '';
+        $message = '';
+
+        $lesSousCategs = SousCategorieManager::getLesSousCategs();
+
+        if(isset($_POST['marque']) && !empty($_POST['marque']) && isset($_POST['refProd']) && !empty($_POST['refProd'])
+            && isset($_POST['libelle']) && !empty($_POST['libelle']) && isset($_POST['prix']) && !empty($_POST['prix'])
+            && isset($_POST['resume']) && !empty($_POST['resume']) && isset($_POST['description']) && !empty($_POST['description'])
+            && isset($_POST['qteStock']) && !empty($_POST['qteStock']) && isset($_POST['seuilAlerte']) && !empty($_POST['seuilAlerte'])
+            && isset($_POST['categorie']) && !empty($_POST['categorie'])){
+
+            if($_FILES['photoProd']['error'] == 0){
+                $marque = self::nettoyer($_POST['marque']);
+                $libelle = self::nettoyer($_POST['libelle']);
+                $refProd = self::nettoyer($_POST['refProd']);
+                $resume = self::nettoyer($_POST['resume']);
+                $description = self::nettoyer($_POST['description']);
+                $prix = self::nettoyer($_POST['prix']);
+                $qteStock = self::nettoyer($_POST['qteStock']);
+                $seuilAlerte = self::nettoyer($_POST['seuilAlerte']);
+                $categorie = self::nettoyer($_POST['categorie']);
+                $photoProd = '../img/' . self::nettoyer($_FILES['photoProd']['name']);
+
+                move_uploaded_file($_FILES['photoProd']['tmp_name'], './img/'.$_FILES['photoProd']['name']);
+
+                ProduitManager::addProduit($refProd, $marque, $libelle, $resume, $description, $photoProd, $qteStock, $prix, $seuilAlerte, $categorie);
+
+                $message = 'Le produit a bien été enregistré.';
+
+            } else {
+                $erreur = 'Erreur : Lors du chargement du fichier.';
+            }
+        } else {
+            $erreur = 'Erreur : Veuillez remplir tous les champs.';
+
+        }
+
+
+        $view = ROOT.'/view/nouveauproduit.php';
+        // appelle la vue
+        $params = array();
+        $params = [
+            'erreur' => $erreur,
+            'message' => $message,
+            'lesSousCategs' => $lesSousCategs
+        ];
+        self::render($view, $params);
+
+    }
+
+
+    /**
+     * Action qui supprime un produit de la bdd
+     * params : tableau des paramètres
+     */
+    public static function deleteProd($params){
+
+        $message = '';
+
+        // Vérifier si l'id de l'article à supprimer est passé dans l'URL
+        if (isset($_GET['idP'])) {
+            $id = self::nettoyer($_GET['idP']);
+            ProduitManager::deleteProduit($id);
+        }
+    
+        
+    } 
+
+    /**
+     * Action qui supprime un produit de la bdd
+     * params : tableau des paramètres
+     */
+    public static function updateProd($params){
+
+        
+
+        
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $id = self::nettoyer($_POST['idProd']);
+            $produit = ProduitManager::getProduitById($id);
+
+            if($produit){
+                $marque = self::nettoyer($_POST['marque']);
+                $refProd = self::nettoyer($_POST['refProd']);
+                $libelle = self::nettoyer($_POST['libelle']);
+                $resume = self::nettoyer($_POST['resume']);
+                $description = self::nettoyer($_POST['description']);
+                $qteStock = self::nettoyer($_POST['qteStock']);
+                $seuilAlerte = self::nettoyer($_POST['seuilAlerte']);
+                $sousCategorie = self::nettoyer($_POST['categorie']);
+    
+                $prixProd = self::nettoyer($_POST['prix']);
+                // récupere le prix sans "€"
+                $prix = str_replace('€', '', $prixProd);
+    
+    
+                if(isset($marque) && !empty($marque) && $produit->getMarque() != $marque){
+                    ProduitManager::updateMarqueById($id, $marque);
+                }
+    
+                if(isset($refProd) && !empty($refProd) && $produit->getRefProd() != $refProd){
+                    ProduitManager::updateRefProdById($id, $refProd);
+                }
+    
+                if(isset($libelle) && !empty($libelle) && $produit->getLibelle() != $libelle){
+                    ProduitManager::updateLibelleById($id, $libelle);
+                }
+    
+                if(isset($prix) && !empty($prix) && $produit->getPrix() != $prix){
+                    ProduitManager::updatePrixById($id, $prix);
+                }
+    
+                if(isset($resume) && !empty($resume) && $produit->getResume() != $resume){
+                    ProduitManager::updateResumeById($id, $resume);
+                }
+    
+                if(isset($description) && !empty($description) && $produit->getDescription() != $description){
+                    ProduitManager::updateDescriptionById($id, $description);
+                }
+    
+                if(isset($qteStock) && !empty($qteStock) && $produit->getQteEnStock() != $qteStock){
+                    ProduitManager::updateQteStockById($id, $qteStock);
+                }
+    
+                if(isset($seuilAlerte) && !empty($seuilAlerte) && $produit->getSeuilAlerte() != $seuilAlerte){
+                    ProduitManager::updateSeuilAlerteById($id, $seuilAlerte);
+                }
+    
+                if(isset($sousCategorie) && !empty($sousCategorie) && $produit->getIdSousCateg() != $sousCategorie){
+                    ProduitManager::updateSousCategById($id, $sousCategorie);
+                }
+    
+                if($_FILES['photoProd']['error'] == 0){
+                    
+                    
+                    $photoProd = '../img/'. $_FILES['photoProd']['name'];
+    
+
+                    // $ancienneImage = $produit->getPhotoProd();
+    
+                    // // Vérifie si l'ancienne image existe 
+                    // if (file_exists($ancienneImage)) {
+                    //     // supprime l'ancienne image
+                    //     unlink($ancienneImage);
+                    // }
+    
+
+                    move_uploaded_file($_FILES['photoProd']['tmp_name'], './img/'.$_FILES['photoProd']['name']);
+
+                    ProduitManager::updateImgById($id, $photoProd);
+                }
+
+                
+
+
+                header('Location: '.SERVER_URL.'/produits/modifier/' . $id .'/?maj=1');
+
+            } else {
+                $message = 'Le produit n\'existe pas';
+            }
+
+            
+        
+        }
+    
+        
+    }
 
 }
 
